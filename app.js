@@ -1,16 +1,147 @@
 import React, { useState } from "https://esm.sh/react@18.3.1";
-import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
+import { createRoot } from "https://esm.sh/react-dom@18.3.1";
 
-const skills = {
-  Support: { icon: "✦", title: "Support & operations", text: "Calm, structured support for difficult technical moments — from intake through a clearly documented resolution.", tags: ["Incident management", "Case ownership", "Escalations", "Knowledge base"], bars: [["Remote troubleshooting", 95], ["Root cause analysis", 92], ["Customer communication", 96], ["Technical documentation", 91]] },
-  Systems: { icon: "⌘", title: "Systems & software", text: "Comfortable across the platforms and tools that power modern support teams and customer workflows.", tags: ["macOS", "Windows 10/11", "iOS / iPadOS", "Salesforce", "ServiceNow", "Git"], bars: [["Apple ecosystems", 96], ["Windows support", 88], ["SaaS platforms", 90], ["Remote tools", 93]] },
-  Security: { icon: "◈", title: "Identity & security", text: "Building a cybersecurity foundation while applying a privacy-first approach to account and access support.", tags: ["MFA", "Authentication", "TCP/IP", "DNS & DHCP", "Python", "Data privacy"], bars: [["Account recovery", 93], ["Authentication & MFA", 91], ["Network diagnostics", 82], ["Cybersecurity studies", 78]] }
-};
+const roles = [
+  {
+    company: "Apple Inc.",
+    title: "AppleCare Tier 2 Advisor",
+    dates: "Jun 2022 — Mar 2024",
+    note: "Promoted from Tier 1 based on technical performance and customer support excellence.",
+    points: [
+      "Diagnosed complex macOS, iOS, Apple ID, iCloud, MFA, activation, synchronization, and authentication issues.",
+      "Owned cases from intake through resolution; performed root-cause analysis and wrote detailed escalation documentation.",
+      "Maintained 90%+ CSAT and 95%+ QA while meeting productivity and service-level expectations.",
+    ],
+  },
+  {
+    company: "Intuit, Inc.",
+    title: "TurboTax Product Support Expert",
+    dates: "Feb 2021 — Apr 2022",
+    note: "Remote support for customers using sensitive financial software on Windows and macOS.",
+    points: [
+      "Resolved installation, update, licensing, login, browser compatibility, and application-functionality issues.",
+      "Used remote support and screen sharing to explain technical steps in plain language.",
+      "Documented cases in Salesforce and updated internal knowledge-base content after product changes.",
+    ],
+  },
+];
 
-function Header(){return <header className="shell nav"><a className="monogram" href="#top" aria-label="Home">YN</a><nav className="nav-links"><a href="#experience">Experience</a><a href="#toolkit">Toolkit</a><a href="#education">Learning</a></nav><a className="nav-contact" href="mailto:you@example.com">Get in touch ↗</a></header>}
-function Hero(){return <section id="top" className="shell hero"><p className="kicker">Technical Support Specialist · Cybersecurity Student</p><div className="hero-grid"><div><h1>Technical support, <em>thoughtfully</em> solved.</h1><p className="intro">A Tier 2 support specialist with 3+ years of experience untangling complex device, software, authentication, and connectivity problems — while making every customer feel heard.</p><div className="hero-actions"><a className="primary-btn" href="mailto:you@example.com">Start a conversation <span>→</span></a><a className="secondary-btn" href="#experience">View experience</a></div></div><aside className="portrait-card"><p className="portrait-label">Portfolio / 2026</p><h2>Human-first support. Technical depth.</h2><div className="mini-grid"><div><strong>Tier 2</strong><span>AppleCare advisor</span></div><div><strong>3+ yrs</strong><span>Remote support</span></div></div></aside></div><div className="stat-bar"><div className="stat"><strong>90%+</strong><span>Customer satisfaction</span></div><div className="stat"><strong>95%+</strong><span>Quality assurance</span></div><div className="stat"><strong>2</strong><span>Global tech companies</span></div></div></section>}
-function Experience(){return <section id="experience" className="experience"><div className="shell section"><div className="section-head"><p className="section-number">01 / EXPERIENCE</p><h2 className="section-title">Trusted with complex problems.</h2></div><div className="roles"><article className="role"><div className="role-date"><span>JUN 2022 — MAR 2024</span><span>REMOTE</span></div><div><p className="company">APPLE INC.</p><h3>AppleCare Tier 2 Advisor</h3><p>Promoted from Tier 1 for technical performance and customer support excellence. Resolved complex macOS, iOS, Apple ID, iCloud, MFA, activation, and synchronization issues in a high-volume remote environment.</p></div><span className="tag">PROMOTED TO TIER 2</span></article><article className="role"><div className="role-date"><span>FEB 2021 — APR 2022</span><span>REMOTE</span></div><div><p className="company">INTUIT, INC.</p><h3>TurboTax Product Support Expert</h3><p>Provided real-time technical and product support for sensitive financial software across Windows and macOS, while documenting findings in Salesforce and escalating defects to engineering.</p></div><span className="tag">SAAS SUPPORT</span></article></div></div></section>}
-function Toolkit(){const [active,setActive]=useState("Support");const current=skills[active];return <section id="toolkit" className="skill-zone"><div className="shell section"><div className="section-head"><p className="section-number">02 / TOOLKIT</p><div className="skill-controls">{Object.keys(skills).map(key=><button className={key===active?"active":""} onClick={()=>setActive(key)} key={key}>{key}</button>)}</div></div><div className="skill-layout"><div className="skill-bars">{current.bars.map(([label,level])=><div className="skill-row" key={label}><span>{label}</span><div className="track"><div className="fill" style={{width:`${level}%`}} /></div><strong>{level}%</strong></div>)}</div><article className="skill-card"><div className="icon">{current.icon}</div><h3>{current.title}</h3><p>{current.text}</p><ul>{current.tags.map(tag=><li key={tag}>{tag}</li>)}</ul></article></div></div></section>}
-function Education(){return <section id="education" className="shell section"><div className="section-head"><p className="section-number">03 / LEARNING</p><h2 className="section-title">Always building forward.</h2></div><div className="path-grid"><article className="education-card"><p className="eyebrow">Currently pursuing</p><h3>B.S. Cybersecurity & Information Assurance</h3><p>Western Governors University · Millcreek, UT</p></article><article className="focus-card"><p className="eyebrow">Focus areas</p><h3>Support experience, security mindset.</h3><div className="module-list"><span>Identity & access</span><span>Networking</span><span>Python</span><span>Data privacy</span></div></article></div></section>}
-function App(){return <div className="site"><Header/><main><Hero/><Experience/><Toolkit/><Education/><section className="contact"><div className="shell"><p className="eyebrow">Open to opportunities</p><h2>Let’s make technology feel more human.</h2><a href="mailto:you@example.com">you@example.com <span>↗</span></a></div></section></main><footer className="shell footer"><span>© 2026 Your Name</span><span>Technical Support · Cybersecurity</span></footer></div>}
-createRoot(document.getElementById("root")).render(<App/>);
+const skillGroups = [
+  { name: "Platforms", items: ["Windows 10/11", "macOS", "iOS", "iPadOS"] },
+  { name: "Support", items: ["Incident management", "Root cause analysis", "Case ownership", "Escalation management", "Knowledge documentation"] },
+  { name: "Tools", items: ["Salesforce", "ServiceNow", "Microsoft 365", "Teams", "Slack", "Git", "TeamViewer"] },
+  { name: "Networking & identity", items: ["TCP/IP", "DNS", "DHCP", "Wi-Fi diagnostics", "MFA", "Authentication", "Account recovery"] },
+];
+
+function Header() {
+  return (
+    <header className="shell nav">
+      <a className="brand" href="#top">DC<span>.</span></a>
+      <nav>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+      </nav>
+      <a className="outline" href="https://github.com/DebugDJ" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </header>
+  );
+}
+
+function Experience() {
+  const [openRole, setOpenRole] = useState(0);
+
+  return (
+    <section id="experience" className="shell section">
+      <p className="label">Experience</p>
+      <h2>Technical support with ownership.</h2>
+      <div className="roles">
+        {roles.map((role, index) => {
+          const isOpen = openRole === index;
+          return (
+            <article className="role" key={role.company}>
+              <button
+                className="role-head"
+                onClick={() => setOpenRole(isOpen ? -1 : index)}
+                aria-expanded={isOpen}
+              >
+                <div>
+                  <p className="company">{role.company}</p>
+                  <h3>{role.title}</h3>
+                </div>
+                <div className="role-date">{role.dates}<span>{isOpen ? "−" : "+"}</span></div>
+              </button>
+              <p className="role-note">{role.note}</p>
+              {isOpen && (
+                <ul>
+                  {role.points.map((point) => <li key={point}>{point}</li>)}
+                </ul>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function Skills() {
+  return (
+    <section id="skills" className="skills">
+      <div className="shell section">
+        <p className="label">Core skills</p>
+        <h2>Tools and systems I work with.</h2>
+        <div className="skill-grid">
+          {skillGroups.map((group) => (
+            <article key={group.name}>
+              <h3>{group.name}</h3>
+              <div>{group.items.map((item) => <span key={item}>{item}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Header />
+      <main id="top">
+        <section className="shell hero">
+          <p className="label">Technical Support Specialist</p>
+          <h1>Darren Cooper Jr.</h1>
+          <p className="summary">Tier 2 technical support specialist with 3+ years of experience supporting Apple and Intuit customers. I troubleshoot operating systems, SaaS applications, authentication, networking, and account-access issues — and communicate solutions clearly to people at every technical level.</p>
+          <div className="quick">
+            <div><strong>3+ years</strong><span>Remote support experience</span></div>
+            <div><strong>90%+</strong><span>Customer satisfaction</span></div>
+            <div><strong>95%+</strong><span>Quality assurance</span></div>
+          </div>
+        </section>
+        <Experience />
+        <Skills />
+        <section id="education" className="shell education">
+          <div>
+            <p className="label">Education</p>
+            <h2>Cybersecurity & Information Assurance</h2>
+            <p>Bachelor of Science, in progress<br />Western Governors University · Millcreek, UT</p>
+          </div>
+          <div className="focus">
+            <p className="label">Current focus</p>
+            <p>Applying a security-first mindset to identity, access, customer data privacy, and technical troubleshooting.</p>
+          </div>
+        </section>
+        <section className="contact">
+          <div className="shell">
+            <p className="label">Connect</p>
+            <h2>View my work and professional profile on GitHub.</h2>
+            <a href="https://github.com/DebugDJ" target="_blank" rel="noreferrer">github.com/DebugDJ ↗</a>
+          </div>
+        </section>
+      </main>
+      <footer className="shell">© 2026 Darren Cooper Jr. <span>Technical Support · Cybersecurity</span></footer>
+    </>
+  );
+}
+
+createRoot(document.getElementById("root")).render(<App />);
