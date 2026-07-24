@@ -36,13 +36,13 @@ const skillGroups = [
 function Header() {
   return (
     <header className="shell nav">
-      <a className="brand" href="#top">DC<span>.</span></a>
+      <span className="site-name">Darren Cooper Jr.</span>
       <nav>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <a className="outline" href="https://github.com/DebugDJ" target="_blank" rel="noreferrer">GitHub ↗</a>
     </header>
   );
 }
@@ -103,6 +103,54 @@ function Skills() {
   );
 }
 
+function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
+  if (submitted) {
+    return (
+      <section id="contact" className="contact">
+        <div className="shell contact-content">
+          <p className="label">Message received</p>
+          <h2>Thanks for reaching out.</h2>
+          <p>I’ll get back to you as soon as I can.</p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section id="contact" className="contact">
+      <div className="shell contact-content">
+        <div>
+          <p className="label">Contact</p>
+          <h2>Let’s talk.</h2>
+          <p>Have a role or opportunity in mind? Send a message and I’ll follow up.</p>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name
+            <input name="name" type="text" autoComplete="name" required />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" autoComplete="email" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" required />
+          </label>
+          <button type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   return (
     <>
@@ -131,13 +179,7 @@ function App() {
             <p>Applying a security-first mindset to identity, access, customer data privacy, and technical troubleshooting.</p>
           </div>
         </section>
-        <section className="contact">
-          <div className="shell">
-            <p className="label">Connect</p>
-            <h2>View my work and professional profile on GitHub.</h2>
-            <a href="https://github.com/DebugDJ" target="_blank" rel="noreferrer">github.com/DebugDJ ↗</a>
-          </div>
-        </section>
+        <Contact />
       </main>
       <footer className="shell">© 2026 Darren Cooper Jr. <span>Technical Support · Cybersecurity</span></footer>
     </>

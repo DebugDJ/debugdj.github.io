@@ -1,10 +1,13 @@
 :root{
   --ink:#172033;
   --muted:#5e6a7d;
-  --blue:#2e5fd8;
-  --line:#dfe4eb;
-  --paper:#f8fafc;
-  --pale:#eff4ff
+  --blue:#315bd6;
+  --blue-deep:#203f97;
+  --coral:#ffb28f;
+  --mint:#b8e6d0;
+  --line:#dbe1ea;
+  --paper:#f5f6f8;
+  --pale:#edf2ff
 }
 *{
   box-sizing:border-box
@@ -27,17 +30,13 @@ body{
   height:76px;
   display:flex;
   align-items:center;
-  justify-content:space-between
+  justify-content:space-between;
+  border-bottom:1px solid var(--line)
 }
-.brand{
+.site-name{
   color:var(--ink);
-  font-family:"DM Mono";
-  font-size:1rem;
-  font-weight:500;
-  text-decoration:none
-}
-.brand span{
-  color:var(--blue)
+  font-size:.86rem;
+  font-weight:700;
 }
 nav{
   display:flex;
@@ -52,15 +51,6 @@ nav a{
 nav a:hover{
   color:var(--blue)
 }
-.outline{
-  padding:9px 13px;
-  border:1px solid var(--line);
-  border-radius:7px;
-  color:var(--ink);
-  font-size:.78rem;
-  font-weight:700;
-  text-decoration:none
-}
 .label{
   margin:0;
   color:var(--blue);
@@ -70,10 +60,36 @@ nav a:hover{
   text-transform:uppercase
 }
 .hero{
-  padding:103px 0 90px;
-  border-bottom:1px solid var(--line)
+  position:relative;
+  padding:100px 58px 70px;
+  margin-top:36px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#fff
+}
+.hero:before{
+  position:absolute;
+  top:0;
+  left:0;
+  width:9px;
+  height:100%;
+  background:var(--blue);
+  content:""
+}
+.hero:after{
+  position:absolute;
+  top:-120px;
+  right:-80px;
+  width:310px;
+  height:310px;
+  border:55px solid var(--pale);
+  border-radius:50%;
+  content:""
 }
 h1{
+  position:relative;
+  z-index:1;
   margin:17px 0 20px;
   font-size:clamp(3rem,7vw,5.6rem);
   letter-spacing:-.075em;
@@ -86,6 +102,8 @@ h2{
   line-height:1.02
 }
 .summary{
+  position:relative;
+  z-index:1;
   max-width:690px;
   margin:0;
   color:#455166;
@@ -93,24 +111,27 @@ h2{
   line-height:1.7
 }
 .quick{
+  position:relative;
+  z-index:1;
   display:flex;
-  gap:0;
-  max-width:700px;
-  margin-top:45px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line)
+  gap:10px;
+  max-width:760px;
+  margin-top:42px
 }
 .quick div{
   flex:1;
-  padding:17px 20px 17px 0
+  padding:17px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:#fff
 }
 .quick div+div{
-  padding-left:24px;
-  border-left:1px solid var(--line)
+  padding-left:17px
 }
 .quick strong{
   display:block;
-  font-size:1.27rem;
+  color:var(--blue-deep);
+  font-size:1.4rem;
   letter-spacing:-.05em
 }
 .quick span{
@@ -119,13 +140,17 @@ h2{
   font-size:.75rem
 }
 .section{
-  padding:90px 0
+  padding:100px 0
 }
 .roles{
   border-top:1px solid var(--line)
 }
 .role{
-  border-bottom:1px solid var(--line)
+  border-bottom:1px solid var(--line);
+  transition:background .2s ease
+}
+.role:hover{
+  background:#fbfcff
 }
 .role-head{
   display:flex;
@@ -181,8 +206,9 @@ h2{
   margin-top:7px
 }
 .skills{
-  background:var(--ink);
-  color:#fff
+  background:var(--blue-deep);
+  color:#fff;
+  border-top:10px solid var(--coral)
 }
 .skills h2{
   margin-bottom:35px
@@ -193,18 +219,20 @@ h2{
 .skill-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  border-top:1px solid #ffffff2d
+  gap:12px
 }
 .skill-grid article{
-  min-height:190px;
-  padding:25px 28px 28px 0;
-  border-bottom:1px solid #ffffff2d
+  min-height:184px;
+  padding:25px;
+  border:1px solid #ffffff2d;
+  border-radius:10px;
+  background:#ffffff0d
 }
 .skill-grid article:nth-child(odd){
   border-right:1px solid #ffffff2d
 }
 .skill-grid article:nth-child(even){
-  padding-left:28px
+  padding-left:25px
 }
 .skill-grid h3{
   margin:0 0 18px;
@@ -228,7 +256,7 @@ h2{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
-  padding:92px 0
+  padding:95px 0
 }
 .education h2{
   margin-bottom:13px;
@@ -239,8 +267,9 @@ h2{
 }
 .focus{
   align-self:end;
-  padding:25px;
+  padding:28px;
   border-radius:10px;
+  border-left:6px solid var(--coral);
   background:var(--pale)
 }
 .focus p:last-child{
@@ -250,25 +279,70 @@ h2{
 }
 .contact{
   padding:85px 0;
-  background:var(--blue);
+  background:var(--ink);
   color:#fff
 }
 .contact .label{
-  color:#d6e2ff
+  color:var(--mint)
 }
 .contact h2{
-  max-width:680px;
-  margin:12px 0 24px
+  margin:10px 0 12px
 }
-.contact a{
-  display:inline-block;
-  padding:11px 14px;
-  border-radius:7px;
+.contact-content{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:80px
+}
+.contact-content > div > p:last-child{
+  max-width:350px;
+  margin:0;
+  color:#c0c9d7
+}
+form{
+  display:grid;
+  gap:16px
+}
+form label{
+  display:grid;
+  gap:7px;
+  color:#d8e1ef;
+  font-size:.78rem;
+  font-weight:700
+}
+input,
+textarea{
+  width:100%;
+  padding:11px 12px;
+  border:1px solid #526075;
+  border-radius:5px;
   background:#fff;
-  color:var(--blue);
+  color:var(--ink);
+  font:inherit;
+  font-size:.9rem
+}
+textarea{
+  resize:vertical
+}
+input:focus,
+textarea:focus{
+  outline:2px solid #8ba9ff;
+  outline-offset:1px;
+  border-color:var(--blue)
+}
+form button{
+  justify-self:start;
+  padding:11px 15px;
+  border:0;
+  border-radius:5px;
+  background:var(--coral);
+  color:var(--ink);
+  font:inherit;
   font-size:.8rem;
   font-weight:700;
-  text-decoration:none
+  cursor:pointer
+}
+form button:hover{
+  background:var(--mint)
 }
 footer{
   display:flex;
@@ -286,7 +360,8 @@ footer{
     display:none
   }
   .hero{
-    padding:76px 0 65px
+    padding:75px 28px 52px;
+    margin-top:22px
   }
   .quick{
     display:grid;
@@ -325,6 +400,10 @@ footer{
   }
   .contact{
     padding:65px 0
+  }
+  .contact-content{
+    grid-template-columns:1fr;
+    gap:30px
   }
   footer{
     gap:15px
