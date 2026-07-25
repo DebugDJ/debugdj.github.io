@@ -104,23 +104,17 @@ function Skills() {
 }
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-
   function handleSubmit(event) {
     event.preventDefault();
-    setSubmitted(true);
-  }
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const message = formData.get("message");
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
 
-  if (submitted) {
-    return (
-      <section id="contact" className="contact">
-        <div className="shell contact-content">
-          <p className="label">Message received</p>
-          <h2>Thanks for reaching out.</h2>
-          <p>I’ll get back to you as soon as I can.</p>
-        </div>
-      </section>
-    );
+    // Replace this address with the email where you want inquiries sent.
+    window.location.href = `mailto:dncrjr@gmail.com?subject=${subject}&body=${body}`;
   }
 
   return (
@@ -181,7 +175,7 @@ function App() {
         </section>
         <Contact />
       </main>
-      <footer className="shell">© 2026 Darren Cooper Jr. <span>Technical Support · Cybersecurity</span></footer>
+      <footer className="shell">© 2026 Darren Cooper Jr. <span>Technical Support · Cybersecurity · Customer Service</span></footer>
     </>
   );
 }
