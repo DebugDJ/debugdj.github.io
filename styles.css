@@ -205,6 +205,47 @@ h2{
 .role li+li{
   margin-top:7px
 }
+.development{
+  padding-top:0
+}
+.development h2{
+  margin-bottom:35px
+}
+.development-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px
+}
+.development-grid article{
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff
+}
+.development-grid h3{
+  margin:0 0 12px;
+  font-size:1.03rem;
+  letter-spacing:-.03em
+}
+.development-grid p{
+  min-height:102px;
+  margin:0 0 20px;
+  color:var(--muted);
+  font-size:.88rem
+}
+.development-tools{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px
+}
+.development-tools span{
+  padding:5px 7px;
+  border:1px solid var(--line);
+  border-radius:5px;
+  color:var(--blue-deep);
+  font-family:"DM Mono";
+  font-size:.64rem
+}
 .skills{
   background:var(--blue-deep);
   color:#fff;
@@ -386,8 +427,17 @@ footer{
     gap:11px;
     font-size:.59rem
   }
-  .skill-grid,.education{
+  .development-grid,.skill-grid,.education{
     grid-template-columns:1fr
+  }
+  .development-grid article{
+    padding:22px 0;
+    border-right:0;
+    border-left:0;
+    border-radius:0
+  }
+  .development-grid p{
+    min-height:auto
   }
   .skill-grid article,.skill-grid article:nth-child(odd),.skill-grid article:nth-child(even){
     min-height:auto;
