@@ -29,8 +29,26 @@ const roles = [
 const skillGroups = [
   { name: "Platforms", items: ["Windows 10/11", "macOS", "iOS", "iPadOS"] },
   { name: "Support", items: ["Incident management", "Root cause analysis", "Case ownership", "Escalation management", "Knowledge documentation"] },
-  { name: "Tools", items: ["Salesforce", "ServiceNow", "Microsoft 365", "Teams", "Slack", "Git", "TeamViewer"] },
+  { name: "Tools", items: ["Salesforce", "Microsoft 365", "Teams", "Slack", "Git", "TeamViewer"] },
   { name: "Networking & identity", items: ["TCP/IP", "DNS", "DHCP", "Wi-Fi diagnostics", "MFA", "Authentication", "Account recovery"] },
+];
+
+const developmentAreas = [
+  {
+    name: "Front-end foundations",
+    description: "Building semantic, responsive pages with HTML and CSS, with attention to layout, accessibility, and clear visual hierarchy.",
+    tools: ["HTML", "CSS", "Responsive design", "Accessibility"],
+  },
+  {
+    name: "React interfaces",
+    description: "Creating reusable UI components and interactive experiences with React, JavaScript, and browser APIs.",
+    tools: ["React", "JavaScript", "Components", "State"],
+  },
+  {
+    name: "Workflow & delivery",
+    description: "Using Git and developer tools to iterate on code, troubleshoot issues, and keep projects organized.",
+    tools: ["Git", "GitHub", "Debugging", "Chrome DevTools"],
+  },
 ];
 
 function Header() {
@@ -39,6 +57,7 @@ function Header() {
       <span className="site-name">Darren Cooper Jr.</span>
       <nav>
         <a href="#experience">Experience</a>
+        <a href="#development">Development</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
@@ -79,6 +98,26 @@ function Experience() {
             </article>
           );
         })}
+      </div>
+    </section>
+  );
+}
+
+function Development() {
+  return (
+    <section id="development" className="shell section development">
+      <p className="label">Development</p>
+      <h2>Learning and building for the web.</h2>
+      <div className="development-grid">
+        {developmentAreas.map((area) => (
+          <article key={area.name}>
+            <h3>{area.name}</h3>
+            <p>{area.description}</p>
+            <div className="development-tools">
+              {area.tools.map((tool) => <span key={tool}>{tool}</span>)}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
@@ -151,9 +190,9 @@ function App() {
       <Header />
       <main id="top">
         <section className="shell hero">
-          <p className="label">Technical Support Specialist</p>
+          <p className="label">Technical Support Specialist · Cybersecurity Student</p>
           <h1>Darren Cooper Jr.</h1>
-          <p className="summary">Tier 2 technical support specialist with 3+ years of experience supporting Apple and Intuit customers. I troubleshoot operating systems, SaaS applications, authentication, networking, and account-access issues — and communicate solutions clearly to people at every technical level.</p>
+          <p className="summary">Tier 2 technical support specialist and Cybersecurity &amp; Information Assurance student with 3+ years of experience supporting Apple and Intuit customers. I troubleshoot operating systems, SaaS applications, authentication, networking, and account-access issues — and communicate solutions clearly to people at every technical level.</p>
           <div className="quick">
             <div><strong>3+ years</strong><span>Remote support experience</span></div>
             <div><strong>90%+</strong><span>Customer satisfaction</span></div>
@@ -161,11 +200,12 @@ function App() {
           </div>
         </section>
         <Experience />
+        <Development />
         <Skills />
         <section id="education" className="shell education">
           <div>
             <p className="label">Education</p>
-            <h2>Cybersecurity & Information Assurance</h2>
+            <h2>Cybersecurity & Information Assurance Student</h2>
             <p>Bachelor of Science, in progress<br />Western Governors University · Millcreek, UT</p>
           </div>
           <div className="focus">
